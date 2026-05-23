@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Fire Likes Panel</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#0b0f1a;
+    overflow:hidden;
+}
+
+body::before{
+    content:'';
+    position:absolute;
+    width:200%;
+    height:200%;
+    background:
+    radial-gradient(circle,#19f600 0%,transparent 20%),
+    radial-gradient(circle,#187eb9 0%,transparent 20%);
+    opacity:.15;
+    animation:bgMove 15s linear infinite;
+}
+
+@keyframes bgMove{
+    0%{transform:translate(-10%,-10%);}
+    50%{transform:translate(0%,0%);}
+    100%{transform:translate(-10%,-10%);}
+}
+
+.panel{
+    width:420px;
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:25px;
+    padding:30px;
+    position:relative;
+    z-index:2;
+    box-shadow:0 0 40px rgba(0,255,255,.15);
+}
+
+.logo{
+    text-align:center;
+    color:white;
+    font-size:28px;
+    font-weight:700;
+}
+
+.logo span{
+    color:#ff9500;
+}
+
+.sub{
+    text-align:center;
+    color:#999;
+    margin-bottom:25px;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    border:none;
+    outline:none;
+    border-radius:12px;
+    background:#111827;
+    color:white;
+    font-size:16px;
+}
+
+button{
+    width:100%;
+    margin-top:15px;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(90deg,#ff9500,#ff5e00);
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+button:hover{
+    box-shadow:0 0 20px #ff9500;
+}
+
+.loader{
+    display:none;
+    margin:20px auto;
+    width:40px;
+    height:40px;
+    border:4px solid rgba(255,255,255,.2);
+    border-top:4px solid #00ffff;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+    100%{
+        transform:rotate(360deg);
+    }
+}
+
+.result{
+    margin-top:20px;
+}
+
+.card{
+    background:#111827;
+    color:white;
+    padding:10px;
+    margin-top:8px;
+    border-radius:10px;
+}
+
+.success{
+    color:#00ff99;
+}
+
+.error{
+    color:rgb(255, 0, 0);
+    text-align:center;
+}
+</style>
+</head>
+<body>
+
+<div class="panel">
+
+    <div class="logo">
+        9XED <span>LIKES</span>
+    </div>
+
+    <div class="sub">
+        Free Fire Likes Panel
+    </div>
+
+    <input
+        type="number"
+        id="uid"
+        placeholder="Enter Free Fire UID">
+
+    <button onclick="sendLikes()">
+        SEND LIKES ⚡
+    </button>
+
+    <div class="loader" id="loader"></div>
+
+    <div class="result" id="result"></div>
+
+</div>
+
+<script>
+
+async function sendLikes(){
+
+    const uid=document.getElementById("uid").value;
+
+    if(!uid){
+        alert("Enter UID");
+        return;
+    }
+
+    document.getElementById("loader").style.display="block";
+    document.getElementById("result").innerHTML="";
+
+    try{
+
+        const response = await fetch(`/like?uid=${uid}`);
+
+        const data = await response.json();
+
+        document.getElementById("loader").style.display="none";
+
+        if(data.error){
+
+            document.getElementById("result").innerHTML=
+            `<div class="error">${data.error}</div>`;
+
+            return;
+        }
+
+        document.getElementById("result").innerHTML=`
+
+        <div class="card">👤 Nickname: ${data.PlayerNickname}</div>
+
+        <div class="card">🆔 UID: ${data.UID}</div>
+
+        <div class="card">🌍 Region: ${data.Region}</div>
+
+        <div class="card">🤡 Likes Before: ${data.LikesBefore}</div>
+
+        <div class="card">☠️ Likes Now: ${data.LikesNow}</div>
+
+        <div class="card success">
+            ⚡ Likes Given: ${data.LikesGiven}
+        </div>
+
+        `;
+    }
+    catch(err){
+
+        document.getElementById("loader").style.display="none";
+
+        document.getElementById("result").innerHTML=
+        `<div class="error">API Connection Failed</div>`;
+    }
+}
+</script>
+
+</body>
+</html>
+```
