@@ -1,183 +1,1237 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Fire Likes Panel</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>9XED LIKES PANEL</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <style>
+
+:root{
+    --green:#78ff3d;
+    --green2:#00ffb3;
+}
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
 }
 
 body{
     min-height:100vh;
+    overflow:hidden;
     display:flex;
     justify-content:center;
     align-items:center;
-    background:#0b0f1a;
-    overflow:hidden;
-}
+    font-family:'Inter',sans-serif;
 
-body::before{
-    content:'';
-    position:absolute;
-    width:200%;
-    height:200%;
     background:
-    radial-gradient(circle,#19f600 0%,transparent 20%),
-    radial-gradient(circle,#187eb9 0%,transparent 20%);
-    opacity:.15;
-    animation:bgMove 15s linear infinite;
+    radial-gradient(circle at center,#07111f 0%,#02040b 70%);
+
+    transition:background .5s ease;
 }
 
-@keyframes bgMove{
-    0%{transform:translate(-10%,-10%);}
-    50%{transform:translate(0%,0%);}
-    100%{transform:translate(-10%,-10%);}
+/* ========================= */
+/* STARS BACKGROUND */
+/* ========================= */
+
+.stars{
+    position:absolute;
+    inset:0;
+    background:url("https://www.transparenttextures.com/patterns/stardust.png");
+    opacity:.3;
+    animation:starsMove 120s linear infinite;
 }
 
-.panel{
-    width:420px;
-    background:rgba(255,255,255,.05);
-    backdrop-filter:blur(20px);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:25px;
-    padding:30px;
-    position:relative;
-    z-index:2;
-    box-shadow:0 0 40px rgba(0,255,255,.15);
+@keyframes starsMove{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(-1000px);
+    }
 }
 
-.logo{
-    text-align:center;
-    color:white;
-    font-size:28px;
-    font-weight:700;
+/* ========================= */
+/* MOON */
+/* ========================= */
+
+.moon{
+
+    position:absolute;
+
+    width:260px;
+    height:260px;
+
+    border-radius:50%;
+
+    right:8%;
+    top:8%;
+
+    background:
+    radial-gradient(circle at 30% 30%,
+    #ffffff,
+    #cfd6e6 35%,
+    #9aa4bc 60%,
+    #5d677b 100%);
+
+    box-shadow:
+    0 0 80px rgba(255,255,255,.25),
+    0 0 180px rgba(255,255,255,.12);
 }
 
-.logo span{
-    color:#ff9500;
+.moon::before{
+
+    content:'';
+
+    position:absolute;
+
+    width:60px;
+    height:60px;
+
+    border-radius:50%;
+
+    background:rgba(0,0,0,.08);
+
+    top:70px;
+    left:50px;
 }
 
-.sub{
-    text-align:center;
-    color:#999;
-    margin-bottom:25px;
-}
+.moon::after{
 
-input{
-    width:100%;
-    padding:14px;
-    border:none;
-    outline:none;
-    border-radius:12px;
-    background:#111827;
-    color:white;
-    font-size:16px;
-}
+    content:'';
 
-button{
-    width:100%;
-    margin-top:15px;
-    padding:14px;
-    border:none;
-    border-radius:12px;
-    background:linear-gradient(90deg,#ff9500,#ff5e00);
-    color:white;
-    font-size:16px;
-    font-weight:600;
-    cursor:pointer;
-}
+    position:absolute;
 
-button:hover{
-    box-shadow:0 0 20px #ff9500;
-}
-
-.loader{
-    display:none;
-    margin:20px auto;
     width:40px;
     height:40px;
-    border:4px solid rgba(255,255,255,.2);
-    border-top:4px solid #00ffff;
+
     border-radius:50%;
+
+    background:rgba(0,0,0,.08);
+
+    bottom:40px;
+    right:60px;
+}
+
+/* ========================= */
+/* RINGS */
+/* ========================= */
+
+.ring{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    border:1px solid rgba(0,255,170,.12);
+
+    animation:rotate linear infinite;
+}
+
+.r1{
+    width:650px;
+    height:650px;
+    animation-duration:20s;
+}
+
+.r2{
+    width:900px;
+    height:900px;
+    border-style:dashed;
+    animation-duration:35s;
+}
+
+.r3{
+    width:1150px;
+    height:1150px;
+    animation-duration:55s;
+}
+
+@keyframes rotate{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* ========================= */
+/* PLATES */
+/* ========================= */
+
+.plate{
+
+    position:absolute;
+
+    width:20px;
+    height:20px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    box-shadow:
+    0 0 20px var(--green),
+    0 0 40px var(--green);
+}
+
+.r1 .plate{
+    top:40px;
+    left:50%;
+}
+
+.r2 .plate{
+    bottom:50px;
+    left:50%;
+}
+
+.r3 .plate{
+    top:50%;
+    right:50px;
+}
+
+/* ========================= */
+/* SPACE EFFECTS */
+/* ========================= */
+
+.space-effects{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+}
+
+/* STARS */
+
+.star{
+
+    position:absolute;
+
+    width:3px;
+    height:3px;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+    0 0 10px white,
+    0 0 20px white;
+
+    animation:twinkle infinite alternate;
+}
+
+@keyframes twinkle{
+
+    from{
+        opacity:.2;
+        transform:scale(.7);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1.5);
+    }
+}
+
+.s1{ top:10%; left:20%; animation-duration:2s; }
+.s2{ top:15%; left:80%; animation-duration:4s; }
+.s3{ top:40%; left:60%; animation-duration:3s; }
+.s4{ top:70%; left:10%; animation-duration:5s; }
+.s5{ top:85%; left:50%; animation-duration:2.5s; }
+.s6{ top:25%; left:35%; animation-duration:3.2s; }
+.s7{ top:60%; left:85%; animation-duration:4.5s; }
+.s8{ top:30%; left:90%; animation-duration:3s; }
+.s9{ top:78%; left:75%; animation-duration:2s; }
+.s10{ top:50%; left:5%; animation-duration:4s; }
+
+/* ========================= */
+/* METEORS */
+/* ========================= */
+
+.meteor{
+
+    position:absolute;
+
+    width:250px;
+    height:2px;
+
+    background:
+    linear-gradient(
+    90deg,
+    white,
+    transparent);
+
+    border-radius:50%;
+
+    opacity:0;
+
+    transform:rotate(-35deg);
+
+    box-shadow:
+    0 0 15px white,
+    0 0 30px #78ff3d;
+
+    animation:meteorFall linear infinite;
+}
+
+@keyframes meteorFall{
+
+    0%{
+        opacity:0;
+        transform:
+        translate(0,0)
+        rotate(-35deg);
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+
+        transform:
+        translate(-1200px,600px)
+        rotate(-35deg);
+    }
+}
+
+.m1{
+    top:10%;
+    left:110%;
+    animation-duration:8s;
+    animation-delay:1s;
+}
+
+.m2{
+    top:30%;
+    left:120%;
+    animation-duration:10s;
+    animation-delay:4s;
+}
+
+.m3{
+    top:5%;
+    left:130%;
+    animation-duration:12s;
+    animation-delay:8s;
+}
+
+/* ========================= */
+/* ROCKETS */
+/* ========================= */
+
+.rocket{
+
+    position:absolute;
+
+    font-size:32px;
+
+    filter:
+    drop-shadow(0 0 10px #78ff3d)
+    drop-shadow(0 0 25px #78ff3d);
+
+    opacity:.9;
+
+    animation:rocketFly linear infinite;
+}
+
+@keyframes rocketFly{
+
+    0%{
+        transform:
+        translate(-200px,600px)
+        rotate(-25deg);
+    }
+
+    100%{
+        transform:
+        translate(1600px,-600px)
+        rotate(-25deg);
+    }
+}
+
+.rkt1{
+
+    bottom:-100px;
+    left:-200px;
+
+    animation-duration:22s;
+    animation-delay:2s;
+}
+
+.rkt2{
+
+    bottom:-300px;
+    left:-250px;
+
+    animation-duration:30s;
+    animation-delay:10s;
+}
+
+/* ========================= */
+/* THEME SWITCH */
+/* ========================= */
+
+.theme-switch{
+
+    position:fixed;
+
+    top:25px;
+    left:25px;
+
+    display:flex;
+    gap:12px;
+
+    z-index:9999;
+}
+
+.theme-btn{
+
+    border:none;
+    cursor:pointer;
+
+    padding:12px 22px;
+
+    border-radius:18px;
+
+    font-size:15px;
+    font-weight:600;
+
+    color:white;
+
+    background:
+    rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(15px);
+
+    transition:.3s;
+}
+
+.theme-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 0 20px rgba(0,255,153,.18);
+}
+
+.active-theme{
+
+    background:
+    linear-gradient(
+    135deg,
+    #78ff3d,
+    #00ffb3);
+
+    color:#06110a;
+}
+
+/* ========================= */
+/* RAIN */
+/* ========================= */
+
+.rain-container{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    display:none;
+
+    z-index:1;
+}
+
+.raindrop{
+
+    position:absolute;
+
+    width:2px;
+    height:80px;
+
+    background:
+    linear-gradient(
+    transparent,
+    rgba(255,255,255,.7));
+
+    opacity:.5;
+
+    animation:rainFall linear infinite;
+}
+
+@keyframes rainFall{
+
+    from{
+        transform:translateY(-120px);
+    }
+
+    to{
+        transform:translateY(120vh);
+    }
+}
+
+/* ========================= */
+/* LIGHTNING */
+/* ========================= */
+
+.lightning{
+
+    position:fixed;
+
+    inset:0;
+
+    background:white;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:99999;
+}
+
+.flash{
+
+    animation:lightningFlash .25s linear;
+}
+
+@keyframes lightningFlash{
+
+    0%{
+        opacity:0;
+    }
+
+    20%{
+        opacity:.85;
+    }
+
+    100%{
+        opacity:0;
+    }
+}
+
+/* ========================= */
+/* ACCESS SCREEN */
+/* ========================= */
+
+.access-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    z-index:100;
+}
+
+.access-box{
+
+    width:430px;
+
+    padding:40px;
+
+    border-radius:36px;
+
+    background:
+    linear-gradient(
+    145deg,
+    rgba(255,255,255,.08),
+    rgba(255,255,255,.03));
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(35px);
+
+    box-shadow:
+    0 0 50px rgba(0,255,170,.12),
+    inset 0 0 20px rgba(255,255,255,.03);
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+.access-box::before{
+
+    content:'';
+
+    position:absolute;
+
+    width:180px;
+    height:180%;
+
+    background:
+    linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.18),
+    transparent);
+
+    top:-30%;
+    left:-50%;
+
+    transform:rotate(20deg);
+
+    animation:glassShine 6s linear infinite;
+}
+
+@keyframes glassShine{
+
+    100%{
+        left:150%;
+    }
+}
+
+/* ========================= */
+/* PANEL */
+/* ========================= */
+
+.panel{
+
+    width:460px;
+
+    padding:38px;
+
+    border-radius:36px;
+
+    background:
+    linear-gradient(
+    145deg,
+    rgba(255,255,255,.08),
+    rgba(255,255,255,.03));
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(35px);
+
+    box-shadow:
+    0 0 50px rgba(0,255,170,.12),
+    inset 0 0 20px rgba(255,255,255,.03);
+
+    display:none;
+
+    position:relative;
+
+    overflow:hidden;
+
+    z-index:10;
+}
+
+.panel::before{
+
+    content:'';
+
+    position:absolute;
+
+    width:180px;
+    height:180%;
+
+    background:
+    linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.18),
+    transparent);
+
+    top:-30%;
+    left:-50%;
+
+    transform:rotate(20deg);
+
+    animation:glassShine 7s linear infinite;
+}
+
+/* ========================= */
+/* LOGO */
+/* ========================= */
+
+.logo,
+.access-logo{
+
+    text-align:center;
+
+    font-size:46px;
+
+    color:white;
+
+    font-family:'Orbitron',sans-serif;
+
+    font-weight:800;
+
+    letter-spacing:2px;
+}
+
+.logo span,
+.access-logo span{
+
+    color:var(--green);
+
+    text-shadow:
+    0 0 15px var(--green),
+    0 0 35px var(--green);
+}
+
+.sub,
+.access-sub{
+
+    text-align:center;
+
+    margin-top:10px;
+
+    color:#96a5c0;
+
+    letter-spacing:3px;
+
+    font-size:13px;
+}
+
+/* ========================= */
+/* INPUTS */
+/* ========================= */
+
+.input-box{
+    margin-top:25px;
+}
+
+.input-box input{
+
+    width:100%;
+    height:65px;
+
+    border:none;
+    outline:none;
+
+    border-radius:18px;
+
+    padding:0 20px;
+
+    color:white;
+    font-size:17px;
+
+    background:
+    linear-gradient(
+    180deg,
+    rgba(255,255,255,.07),
+    rgba(255,255,255,.03));
+
+    border:1px solid rgba(255,255,255,.06);
+
+    box-shadow:
+    inset 0 0 15px rgba(0,255,170,.05),
+    0 0 15px rgba(0,255,170,.04);
+
+    transition:.3s;
+}
+
+.input-box input:focus{
+
+    border:1px solid rgba(120,255,61,.5);
+
+    box-shadow:
+    0 0 25px rgba(120,255,61,.15),
+    inset 0 0 10px rgba(120,255,61,.1);
+}
+
+.input-box input::placeholder{
+    color:#92a1bc;
+}
+
+/* ========================= */
+/* BUTTON */
+/* ========================= */
+
+.btn{
+
+    width:100%;
+    height:65px;
+
+    margin-top:25px;
+
+    border:none;
+    cursor:pointer;
+
+    border-radius:20px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #78ff3d,
+    #00ffb3);
+
+    color:#05110a;
+
+    font-size:18px;
+    font-weight:700;
+
+    position:relative;
+    overflow:hidden;
+
+    transition:.35s ease;
+
+    box-shadow:
+    0 10px 30px rgba(0,255,153,.2);
+}
+
+.btn::before{
+
+    content:'';
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    left:-100%;
+    top:0;
+
+    background:
+    linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.45),
+    transparent);
+}
+
+.btn:hover::before{
+    animation:btnShine .9s linear;
+}
+
+@keyframes btnShine{
+
+    100%{
+        left:120%;
+    }
+}
+
+.btn:hover{
+
+    transform:translateY(-3px) scale(1.02);
+
+    box-shadow:
+    0 0 40px rgba(0,255,153,.35);
+}
+
+/* ========================= */
+/* LOADER */
+/* ========================= */
+
+.loader{
+
+    width:70px;
+    height:70px;
+
+    border-radius:50%;
+
+    margin:25px auto;
+
+    display:none;
+
+    position:relative;
+}
+
+.loader::before,
+.loader::after{
+
+    content:'';
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:50%;
+
+    border:3px solid transparent;
+}
+
+.loader::before{
+
+    border-top:3px solid var(--green);
+
     animation:spin 1s linear infinite;
 }
 
+.loader::after{
+
+    border-bottom:3px solid #00ffea;
+
+    animation:spinReverse 1.3s linear infinite;
+}
+
 @keyframes spin{
+
     100%{
         transform:rotate(360deg);
     }
 }
 
-.result{
+@keyframes spinReverse{
+
+    100%{
+        transform:rotate(-360deg);
+    }
+}
+
+/* ========================= */
+/* DIALOG */
+/* ========================= */
+
+.dialog{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:999;
+}
+
+.dialog-box{
+
+    width:420px;
+
+    padding:30px;
+
+    border-radius:28px;
+
+    background:
+    linear-gradient(
+    145deg,
+    rgba(255,255,255,.08),
+    rgba(255,255,255,.03));
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(25px);
+
+    box-shadow:
+    0 0 40px rgba(0,255,153,.18);
+
+    animation:popup .4s ease;
+}
+
+@keyframes popup{
+
+    from{
+        opacity:0;
+        transform:scale(.8);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.dialog-title{
+
+    font-size:26px;
+
+    color:white;
+
+    font-family:'Orbitron',sans-serif;
+
+    margin-bottom:20px;
+}
+
+.result-card{
+
+    padding:14px;
+
+    border-radius:14px;
+
+    margin-top:12px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    color:white;
+}
+
+.close-btn{
     margin-top:20px;
 }
 
-.card{
-    background:#111827;
-    color:white;
-    padding:10px;
-    margin-top:8px;
-    border-radius:10px;
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media(max-width:520px){
+
+    .access-box,
+    .panel,
+    .dialog-box{
+        width:92%;
+    }
+
+    .moon{
+        width:180px;
+        height:180px;
+    }
 }
 
-.success{
-    color:#00ff99;
-}
-
-.error{
-    color:rgb(255, 0, 0);
-    text-align:center;
-}
 </style>
+
 </head>
+
 <body>
 
-<div class="panel">
+<div class="stars"></div>
+
+<div class="moon"></div>
+
+<div class="ring r1">
+    <div class="plate"></div>
+</div>
+
+<div class="ring r2">
+    <div class="plate"></div>
+</div>
+
+<div class="ring r3">
+    <div class="plate"></div>
+</div>
+
+<!-- SPACE EFFECTS -->
+
+<div class="space-effects">
+
+    <div class="star s1"></div>
+    <div class="star s2"></div>
+    <div class="star s3"></div>
+    <div class="star s4"></div>
+    <div class="star s5"></div>
+    <div class="star s6"></div>
+    <div class="star s7"></div>
+    <div class="star s8"></div>
+    <div class="star s9"></div>
+    <div class="star s10"></div>
+
+    <div class="meteor m1"></div>
+    <div class="meteor m2"></div>
+    <div class="meteor m3"></div>
+
+    <div class="rocket rkt1">🚀</div>
+    <div class="rocket rkt2">🚀</div>
+
+</div>
+
+<!-- THEME SWITCH -->
+
+<div class="theme-switch">
+
+    <button class="theme-btn active-theme"
+    onclick="setTheme('night',this)">
+        🌌 Night
+    </button>
+
+    <button class="theme-btn"
+    onclick="setTheme('rain',this)">
+        🌧 Rainy
+    </button>
+
+</div>
+
+<!-- RAIN -->
+
+<div class="rain-container" id="rainContainer"></div>
+
+<!-- LIGHTNING -->
+
+<div class="lightning" id="lightning"></div>
+
+<!-- ACCESS SCREEN -->
+
+<div class="access-screen" id="accessScreen">
+
+    <div class="access-box">
+
+        <div class="access-logo">
+            9XED <span>ACCESS</span>
+        </div>
+
+        <div class="access-sub">
+            ENTER PREMIUM KEY
+        </div>
+
+        <div class="input-box">
+
+            <input
+            type="password"
+            id="accessKey"
+            placeholder="Enter Access Key">
+
+        </div>
+
+        <button class="btn" onclick="verifyKey()">
+            UNLOCK PANEL 🚀
+        </button>
+
+    </div>
+
+</div>
+
+<!-- MAIN PANEL -->
+
+<div class="panel" id="mainPanel">
 
     <div class="logo">
         9XED <span>LIKES</span>
     </div>
 
     <div class="sub">
-        Free Fire Likes Panel
+        NEXT GEN SPACE PANEL
     </div>
 
-    <input
+    <div class="input-box">
+
+        <input
         type="number"
         id="uid"
-        placeholder="Enter Free Fire UID">
+        placeholder="Enter Your FF UID">
 
-    <button onclick="sendLikes()">
+    </div>
+
+    <button class="btn" onclick="sendLikes()">
         SEND LIKES ⚡
     </button>
 
     <div class="loader" id="loader"></div>
 
-    <div class="result" id="result"></div>
+</div>
+
+<!-- SUCCESS DIALOG -->
+
+<div class="dialog" id="dialog">
+
+    <div class="dialog-box">
+
+        <div class="dialog-title">
+            LIKES SUCCESS
+        </div>
+
+        <div id="dialogResult"></div>
+
+        <button class="btn close-btn" onclick="closeDialog()">
+            CLOSE
+        </button>
+
+    </div>
 
 </div>
 
 <script>
 
+/* ========================= */
+/* SFX */
+/* ========================= */
+
+const unlockSfx = new Audio(
+'https://assets.mixkit.co/active_storage/sfx/2019/2019-preview.mp3'
+);
+
+const failSfx = new Audio(
+'https://assets.mixkit.co/active_storage/sfx/2955/2955-preview.mp3'
+);
+
+const transactionSfx = new Audio(
+'https://assets.mixkit.co/active_storage/sfx/270/270-preview.mp3'
+);
+
+const successSfx = new Audio(
+'https://assets.mixkit.co/active_storage/sfx/1435/1435-preview.mp3'
+);
+
+const clickSfx = new Audio(
+'https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3'
+);
+
+/* ========================= */
+/* VERIFY KEY */
+/* ========================= */
+
+function verifyKey(){
+
+    clickSfx.play();
+
+    const key=document.getElementById("accessKey").value;
+
+    if(key === "KeY@##.//123admin"){
+
+        unlockSfx.play();
+
+        confetti({
+
+            particleCount:180,
+            spread:120,
+            startVelocity:45
+
+        });
+
+        document.getElementById("accessScreen").style.display="none";
+
+        document.getElementById("mainPanel").style.display="block";
+    }
+
+    else{
+
+        failSfx.play();
+
+        alert("INVALID ACCESS KEY");
+    }
+}
+
+/* ========================= */
+/* SEND LIKES */
+/* ========================= */
+
 async function sendLikes(){
+
+    clickSfx.play();
 
     const uid=document.getElementById("uid").value;
 
     if(!uid){
-        alert("Enter UID");
+
+        failSfx.play();
+
+        alert("ENTER UID");
+
         return;
     }
 
+    transactionSfx.play();
+
     document.getElementById("loader").style.display="block";
-    document.getElementById("result").innerHTML="";
 
     try{
 
@@ -189,40 +1243,193 @@ async function sendLikes(){
 
         if(data.error){
 
-            document.getElementById("result").innerHTML=
-            `<div class="error">${data.error}</div>`;
+            failSfx.play();
+
+            alert(data.error);
 
             return;
         }
 
-        document.getElementById("result").innerHTML=`
+        successSfx.play();
 
-        <div class="card">👤 Nickname: ${data.PlayerNickname}</div>
+        confetti({
 
-        <div class="card">🆔 UID: ${data.UID}</div>
+            particleCount:220,
+            spread:120,
+            scalar:1.2
+        });
 
-        <div class="card">🌍 Region: ${data.Region}</div>
+        document.getElementById("dialog").style.display="flex";
 
-        <div class="card">🤡 Likes Before: ${data.LikesBefore}</div>
+        document.getElementById("dialogResult").innerHTML=`
 
-        <div class="card">☠️ Likes Now: ${data.LikesNow}</div>
+        <div class="result-card">
+        👤 Nickname : ${data.PlayerNickname}
+        </div>
 
-        <div class="card success">
-            ⚡ Likes Given: ${data.LikesGiven}
+        <div class="result-card">
+        🆔 UID : ${data.UID}
+        </div>
+
+        <div class="result-card">
+        🌍 Region : ${data.Region}
+        </div>
+
+        <div class="result-card">
+        ❤️ Likes Before : ${data.LikesBefore}
+        </div>
+
+        <div class="result-card">
+        🚀 Likes Now : ${data.LikesNow}
+        </div>
+
+        <div class="result-card">
+        ⚡ Likes Given : ${data.LikesGiven}
         </div>
 
         `;
     }
+
     catch(err){
 
         document.getElementById("loader").style.display="none";
 
-        document.getElementById("result").innerHTML=
-        `<div class="error">API Connection Failed</div>`;
+        failSfx.play();
+
+        alert("API CONNECTION FAILED");
     }
 }
+
+/* ========================= */
+/* CLOSE DIALOG */
+/* ========================= */
+
+function closeDialog(){
+
+    clickSfx.play();
+
+    document.getElementById("dialog").style.display="none";
+}
+
+/* ========================= */
+/* THEME SYSTEM */
+/* ========================= */
+
+let currentTheme = "night";
+
+function setTheme(theme,button){
+
+    currentTheme = theme;
+
+    document.querySelectorAll(".theme-btn")
+    .forEach(btn=>btn.classList.remove("active-theme"));
+
+    button.classList.add("active-theme");
+
+    const rainContainer =
+    document.getElementById("rainContainer");
+
+    if(theme === "night"){
+
+        document.body.style.background =
+        "radial-gradient(circle at center,#07111f 0%,#02040b 70%)";
+
+        rainContainer.style.display = "none";
+    }
+
+    if(theme === "rain"){
+
+        document.body.style.background =
+        "radial-gradient(circle at center,#0b1626 0%,#02040b 75%)";
+
+        rainContainer.style.display = "block";
+
+        createRain();
+    }
+}
+
+/* ========================= */
+/* CREATE RAIN */
+/* ========================= */
+
+function createRain(){
+
+    const rainContainer =
+    document.getElementById("rainContainer");
+
+    rainContainer.innerHTML = "";
+
+    for(let i=0;i<180;i++){
+
+        const rain =
+        document.createElement("div");
+
+        rain.classList.add("raindrop");
+
+        rain.style.left =
+        Math.random()*100+"%";
+
+        rain.style.animationDuration =
+        (Math.random()*1+0.5)+"s";
+
+        rain.style.opacity =
+        Math.random();
+
+        rain.style.animationDelay =
+        Math.random()*2+"s";
+
+        rainContainer.appendChild(rain);
+    }
+}
+
+/* ========================= */
+/* LIGHTNING EFFECT */
+/* ========================= */
+
+function triggerLightning(){
+
+    if(currentTheme !== "rain")
+    return;
+
+    const lightning =
+    document.getElementById("lightning");
+
+    lightning.classList.add("flash");
+
+    const thunder =
+    new Audio(
+    'https://assets.mixkit.co/active_storage/sfx/2515/2515-preview.mp3'
+    );
+
+    thunder.volume = 0.6;
+
+    thunder.play();
+
+    setTimeout(()=>{
+
+        lightning.classList.remove("flash");
+
+    },300);
+}
+
+/* RANDOM LIGHTNING */
+
+setInterval(()=>{
+
+    if(currentTheme === "rain"){
+
+        const random =
+        Math.random();
+
+        if(random > 0.6){
+
+            triggerLightning();
+        }
+    }
+
+},5000);
+
 </script>
 
 </body>
 </html>
-```
