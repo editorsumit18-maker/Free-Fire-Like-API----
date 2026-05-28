@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>9XED LIKES PANEL</title>
+<title>9XED ULTRA SPACE PANEL</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
@@ -17,6 +16,7 @@
 :root{
     --green:#78ff3d;
     --green2:#00ffb3;
+    --glass:rgba(255,255,255,.07);
 }
 
 *{
@@ -26,28 +26,101 @@
 }
 
 body{
+
     min-height:100vh;
+
     overflow:hidden;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    font-family:'Inter',sans-serif;
 
     background:
     radial-gradient(circle at center,#07111f 0%,#02040b 70%);
 
-    transition:background .5s ease;
+    font-family:'Inter',sans-serif;
+
+    transition:1s ease;
+
+    position:relative;
 }
 
 /* ========================= */
-/* STARS BACKGROUND */
+/* NOISE */
+/* ========================= */
+
+body::before{
+
+    content:'';
+
+    position:absolute;
+    inset:0;
+
+    background:
+    url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+
+    opacity:.18;
+
+    mix-blend-mode:soft-light;
+
+    pointer-events:none;
+}
+
+/* ========================= */
+/* AURORA */
+/* ========================= */
+
+.aurora{
+
+    position:absolute;
+
+    width:900px;
+    height:900px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(circle,
+    rgba(0,255,170,.18),
+    transparent 70%);
+
+    filter:blur(60px);
+
+    animation:auroraMove 12s ease-in-out infinite;
+
+    top:-200px;
+    left:-200px;
+}
+
+@keyframes auroraMove{
+
+    0%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(180px,100px);
+    }
+
+    100%{
+        transform:translate(0,0);
+    }
+}
+
+/* ========================= */
+/* STARS */
 /* ========================= */
 
 .stars{
+
     position:absolute;
     inset:0;
-    background:url("https://www.transparenttextures.com/patterns/stardust.png");
-    opacity:.3;
+
+    background:
+    url("https://www.transparenttextures.com/patterns/stardust.png");
+
+    opacity:.35;
+
     animation:starsMove 120s linear infinite;
 }
 
@@ -70,8 +143,8 @@ body{
 
     position:absolute;
 
-    width:260px;
-    height:260px;
+    width:240px;
+    height:240px;
 
     border-radius:50%;
 
@@ -81,13 +154,15 @@ body{
     background:
     radial-gradient(circle at 30% 30%,
     #ffffff,
-    #cfd6e6 35%,
-    #9aa4bc 60%,
-    #5d677b 100%);
+    #d7dff0 30%,
+    #9ba7c3 60%,
+    #576276 100%);
 
     box-shadow:
     0 0 80px rgba(255,255,255,.25),
-    0 0 180px rgba(255,255,255,.12);
+    0 0 160px rgba(255,255,255,.12);
+
+    transition:1s ease;
 }
 
 .moon::before{
@@ -96,8 +171,8 @@ body{
 
     position:absolute;
 
-    width:60px;
-    height:60px;
+    width:45px;
+    height:45px;
 
     border-radius:50%;
 
@@ -113,15 +188,86 @@ body{
 
     position:absolute;
 
-    width:40px;
-    height:40px;
+    width:28px;
+    height:28px;
 
     border-radius:50%;
 
     background:rgba(0,0,0,.08);
 
-    bottom:40px;
-    right:60px;
+    bottom:50px;
+    right:55px;
+}
+
+/* ========================= */
+/* CLOUDS */
+/* ========================= */
+
+.clouds{
+
+    position:absolute;
+    inset:0;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:1s ease;
+
+    z-index:3;
+}
+
+.cloud{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(circle,
+    rgba(0,0,0,.95),
+    rgba(0,0,0,.8));
+
+    filter:blur(30px);
+
+    animation:cloudMove linear infinite;
+}
+
+.c1{
+
+    width:500px;
+    height:180px;
+
+    top:40px;
+    left:-200px;
+
+    animation-duration:45s;
+}
+
+.c2{
+
+    width:700px;
+    height:220px;
+
+    top:80px;
+    right:-250px;
+
+    animation-duration:60s;
+}
+
+@keyframes cloudMove{
+
+    0%{
+        transform:translateX(0);
+    }
+
+    50%{
+        transform:translateX(100px);
+    }
+
+    100%{
+        transform:translateX(0);
+    }
 }
 
 /* ========================= */
@@ -134,7 +280,7 @@ body{
 
     border-radius:50%;
 
-    border:1px solid rgba(0,255,170,.12);
+    border:1px solid rgba(0,255,170,.08);
 
     animation:rotate linear infinite;
 }
@@ -148,14 +294,14 @@ body{
 .r2{
     width:900px;
     height:900px;
+    animation-duration:40s;
     border-style:dashed;
-    animation-duration:35s;
 }
 
 .r3{
-    width:1150px;
-    height:1150px;
-    animation-duration:55s;
+    width:1200px;
+    height:1200px;
+    animation-duration:60s;
 }
 
 @keyframes rotate{
@@ -177,91 +323,48 @@ body{
 
     position:absolute;
 
-    width:20px;
-    height:20px;
+    width:18px;
+    height:18px;
 
     border-radius:50%;
 
     background:var(--green);
 
     box-shadow:
-    0 0 20px var(--green),
-    0 0 40px var(--green);
+    0 0 15px var(--green),
+    0 0 30px var(--green);
 }
 
 .r1 .plate{
-    top:40px;
+    top:35px;
     left:50%;
 }
 
 .r2 .plate{
-    bottom:50px;
+    bottom:40px;
     left:50%;
 }
 
 .r3 .plate{
-    top:50%;
     right:50px;
+    top:50%;
 }
-
-/* ========================= */
-/* SPACE EFFECTS */
-/* ========================= */
-
-.space-effects{
-    position:absolute;
-    inset:0;
-    overflow:hidden;
-    pointer-events:none;
-}
-
-/* STARS */
-
-.star{
-
-    position:absolute;
-
-    width:3px;
-    height:3px;
-
-    border-radius:50%;
-
-    background:white;
-
-    box-shadow:
-    0 0 10px white,
-    0 0 20px white;
-
-    animation:twinkle infinite alternate;
-}
-
-@keyframes twinkle{
-
-    from{
-        opacity:.2;
-        transform:scale(.7);
-    }
-
-    to{
-        opacity:1;
-        transform:scale(1.5);
-    }
-}
-
-.s1{ top:10%; left:20%; animation-duration:2s; }
-.s2{ top:15%; left:80%; animation-duration:4s; }
-.s3{ top:40%; left:60%; animation-duration:3s; }
-.s4{ top:70%; left:10%; animation-duration:5s; }
-.s5{ top:85%; left:50%; animation-duration:2.5s; }
-.s6{ top:25%; left:35%; animation-duration:3.2s; }
-.s7{ top:60%; left:85%; animation-duration:4.5s; }
-.s8{ top:30%; left:90%; animation-duration:3s; }
-.s9{ top:78%; left:75%; animation-duration:2s; }
-.s10{ top:50%; left:5%; animation-duration:4s; }
 
 /* ========================= */
 /* METEORS */
 /* ========================= */
+
+.space-effects{
+
+    position:absolute;
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    transition:1s ease;
+}
 
 .meteor{
 
@@ -276,15 +379,13 @@ body{
     white,
     transparent);
 
-    border-radius:50%;
+    transform:rotate(-35deg);
 
     opacity:0;
 
-    transform:rotate(-35deg);
-
     box-shadow:
-    0 0 15px white,
-    0 0 30px #78ff3d;
+    0 0 20px white,
+    0 0 40px #78ff3d;
 
     animation:meteorFall linear infinite;
 }
@@ -306,30 +407,29 @@ body{
         opacity:0;
 
         transform:
-        translate(-1200px,600px)
+        translate(-1200px,700px)
         rotate(-35deg);
     }
 }
 
 .m1{
     top:10%;
-    left:110%;
+    left:120%;
     animation-duration:8s;
-    animation-delay:1s;
 }
 
 .m2{
-    top:30%;
-    left:120%;
-    animation-duration:10s;
-    animation-delay:4s;
+    top:25%;
+    left:130%;
+    animation-duration:12s;
+    animation-delay:3s;
 }
 
 .m3{
     top:5%;
-    left:130%;
-    animation-duration:12s;
-    animation-delay:8s;
+    left:110%;
+    animation-duration:10s;
+    animation-delay:6s;
 }
 
 /* ========================= */
@@ -344,9 +444,7 @@ body{
 
     filter:
     drop-shadow(0 0 10px #78ff3d)
-    drop-shadow(0 0 25px #78ff3d);
-
-    opacity:.9;
+    drop-shadow(0 0 20px #78ff3d);
 
     animation:rocketFly linear infinite;
 }
@@ -355,205 +453,41 @@ body{
 
     0%{
         transform:
-        translate(-200px,600px)
+        translate(-300px,600px)
         rotate(-25deg);
     }
 
     100%{
         transform:
-        translate(1600px,-600px)
+        translate(1700px,-700px)
         rotate(-25deg);
     }
 }
 
 .rkt1{
-
     bottom:-100px;
     left:-200px;
-
-    animation-duration:22s;
-    animation-delay:2s;
+    animation-duration:24s;
 }
 
 .rkt2{
-
-    bottom:-300px;
-    left:-250px;
-
-    animation-duration:30s;
-    animation-delay:10s;
+    bottom:-200px;
+    left:-300px;
+    animation-duration:32s;
+    animation-delay:6s;
 }
 
 /* ========================= */
-/* THEME SWITCH */
+/* PANEL */
 /* ========================= */
 
-.theme-switch{
+.panel{
 
-    position:fixed;
-
-    top:25px;
-    left:25px;
-
-    display:flex;
-    gap:12px;
-
-    z-index:9999;
-}
-
-.theme-btn{
-
-    border:none;
-    cursor:pointer;
-
-    padding:12px 22px;
-
-    border-radius:18px;
-
-    font-size:15px;
-    font-weight:600;
-
-    color:white;
-
-    background:
-    rgba(255,255,255,.08);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    backdrop-filter:blur(15px);
-
-    transition:.3s;
-}
-
-.theme-btn:hover{
-
-    transform:translateY(-2px);
-
-    box-shadow:
-    0 0 20px rgba(0,255,153,.18);
-}
-
-.active-theme{
-
-    background:
-    linear-gradient(
-    135deg,
-    #78ff3d,
-    #00ffb3);
-
-    color:#06110a;
-}
-
-/* ========================= */
-/* RAIN */
-/* ========================= */
-
-.rain-container{
-
-    position:absolute;
-
-    inset:0;
-
-    overflow:hidden;
-
-    pointer-events:none;
-
-    display:none;
-
-    z-index:1;
-}
-
-.raindrop{
-
-    position:absolute;
-
-    width:2px;
-    height:80px;
-
-    background:
-    linear-gradient(
-    transparent,
-    rgba(255,255,255,.7));
-
-    opacity:.5;
-
-    animation:rainFall linear infinite;
-}
-
-@keyframes rainFall{
-
-    from{
-        transform:translateY(-120px);
-    }
-
-    to{
-        transform:translateY(120vh);
-    }
-}
-
-/* ========================= */
-/* LIGHTNING */
-/* ========================= */
-
-.lightning{
-
-    position:fixed;
-
-    inset:0;
-
-    background:white;
-
-    opacity:0;
-
-    pointer-events:none;
-
-    z-index:99999;
-}
-
-.flash{
-
-    animation:lightningFlash .25s linear;
-}
-
-@keyframes lightningFlash{
-
-    0%{
-        opacity:0;
-    }
-
-    20%{
-        opacity:.85;
-    }
-
-    100%{
-        opacity:0;
-    }
-}
-
-/* ========================= */
-/* ACCESS SCREEN */
-/* ========================= */
-
-.access-screen{
-
-    position:fixed;
-
-    inset:0;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    z-index:100;
-}
-
-.access-box{
-
-    width:430px;
+    width:450px;
 
     padding:40px;
 
-    border-radius:36px;
+    border-radius:34px;
 
     background:
     linear-gradient(
@@ -569,18 +503,20 @@ body{
     0 0 50px rgba(0,255,170,.12),
     inset 0 0 20px rgba(255,255,255,.03);
 
+    position:relative;
+
     overflow:hidden;
 
-    position:relative;
+    z-index:20;
 }
 
-.access-box::before{
+.panel::before{
 
     content:'';
 
     position:absolute;
 
-    width:180px;
+    width:220px;
     height:180%;
 
     background:
@@ -606,86 +542,25 @@ body{
 }
 
 /* ========================= */
-/* PANEL */
-/* ========================= */
-
-.panel{
-
-    width:460px;
-
-    padding:38px;
-
-    border-radius:36px;
-
-    background:
-    linear-gradient(
-    145deg,
-    rgba(255,255,255,.08),
-    rgba(255,255,255,.03));
-
-    border:1px solid rgba(255,255,255,.08);
-
-    backdrop-filter:blur(35px);
-
-    box-shadow:
-    0 0 50px rgba(0,255,170,.12),
-    inset 0 0 20px rgba(255,255,255,.03);
-
-    display:none;
-
-    position:relative;
-
-    overflow:hidden;
-
-    z-index:10;
-}
-
-.panel::before{
-
-    content:'';
-
-    position:absolute;
-
-    width:180px;
-    height:180%;
-
-    background:
-    linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,.18),
-    transparent);
-
-    top:-30%;
-    left:-50%;
-
-    transform:rotate(20deg);
-
-    animation:glassShine 7s linear infinite;
-}
-
-/* ========================= */
 /* LOGO */
 /* ========================= */
 
-.logo,
-.access-logo{
+.logo{
 
     text-align:center;
 
     font-size:46px;
 
-    color:white;
+    font-weight:900;
 
     font-family:'Orbitron',sans-serif;
 
-    font-weight:800;
+    color:white;
 
     letter-spacing:2px;
 }
 
-.logo span,
-.access-logo span{
+.logo span{
 
     color:var(--green);
 
@@ -694,14 +569,13 @@ body{
     0 0 35px var(--green);
 }
 
-.sub,
-.access-sub{
+.sub{
 
     text-align:center;
 
     margin-top:10px;
 
-    color:#96a5c0;
+    color:#95a4bf;
 
     letter-spacing:3px;
 
@@ -709,54 +583,51 @@ body{
 }
 
 /* ========================= */
-/* INPUTS */
+/* INPUT */
 /* ========================= */
 
 .input-box{
-    margin-top:25px;
+
+    margin-top:28px;
 }
 
 .input-box input{
 
     width:100%;
-    height:65px;
+    height:68px;
 
     border:none;
     outline:none;
 
     border-radius:18px;
 
-    padding:0 20px;
-
-    color:white;
-    font-size:17px;
+    padding:0 22px;
 
     background:
     linear-gradient(
     180deg,
-    rgba(255,255,255,.07),
+    rgba(255,255,255,.06),
     rgba(255,255,255,.03));
 
     border:1px solid rgba(255,255,255,.06);
 
-    box-shadow:
-    inset 0 0 15px rgba(0,255,170,.05),
-    0 0 15px rgba(0,255,170,.04);
+    color:white;
 
-    transition:.3s;
-}
+    font-size:17px;
 
-.input-box input:focus{
-
-    border:1px solid rgba(120,255,61,.5);
-
-    box-shadow:
-    0 0 25px rgba(120,255,61,.15),
-    inset 0 0 10px rgba(120,255,61,.1);
+    transition:.35s;
 }
 
 .input-box input::placeholder{
     color:#92a1bc;
+}
+
+.input-box input:focus{
+
+    border:1px solid rgba(120,255,61,.45);
+
+    box-shadow:
+    0 0 25px rgba(120,255,61,.12);
 }
 
 /* ========================= */
@@ -766,7 +637,7 @@ body{
 .btn{
 
     width:100%;
-    height:65px;
+    height:68px;
 
     margin-top:25px;
 
@@ -784,15 +655,24 @@ body{
     color:#05110a;
 
     font-size:18px;
-    font-weight:700;
-
-    position:relative;
-    overflow:hidden;
+    font-weight:800;
 
     transition:.35s ease;
 
+    overflow:hidden;
+
+    position:relative;
+
     box-shadow:
-    0 10px 30px rgba(0,255,153,.2);
+    0 10px 30px rgba(0,255,170,.2);
+}
+
+.btn:hover{
+
+    transform:translateY(-3px) scale(1.02);
+
+    box-shadow:
+    0 0 40px rgba(0,255,170,.3);
 }
 
 .btn::before{
@@ -826,14 +706,6 @@ body{
     }
 }
 
-.btn:hover{
-
-    transform:translateY(-3px) scale(1.02);
-
-    box-shadow:
-    0 0 40px rgba(0,255,153,.35);
-}
-
 /* ========================= */
 /* LOADER */
 /* ========================= */
@@ -843,9 +715,9 @@ body{
     width:70px;
     height:70px;
 
-    border-radius:50%;
-
     margin:25px auto;
+
+    border-radius:50%;
 
     display:none;
 
@@ -858,7 +730,6 @@ body{
     content:'';
 
     position:absolute;
-
     inset:0;
 
     border-radius:50%;
@@ -875,7 +746,7 @@ body{
 
 .loader::after{
 
-    border-bottom:3px solid #00ffea;
+    border-bottom:3px solid #00ffee;
 
     animation:spinReverse 1.3s linear infinite;
 }
@@ -904,12 +775,12 @@ body{
 
     inset:0;
 
-    background:rgba(0,0,0,.55);
-
     display:none;
 
     justify-content:center;
     align-items:center;
+
+    background:rgba(0,0,0,.55);
 
     z-index:999;
 }
@@ -932,9 +803,6 @@ body{
 
     backdrop-filter:blur(25px);
 
-    box-shadow:
-    0 0 40px rgba(0,255,153,.18);
-
     animation:popup .4s ease;
 }
 
@@ -951,24 +819,13 @@ body{
     }
 }
 
-.dialog-title{
-
-    font-size:26px;
-
-    color:white;
-
-    font-family:'Orbitron',sans-serif;
-
-    margin-bottom:20px;
-}
-
 .result-card{
+
+    margin-top:12px;
 
     padding:14px;
 
     border-radius:14px;
-
-    margin-top:12px;
 
     background:rgba(255,255,255,.04);
 
@@ -977,25 +834,142 @@ body{
     color:white;
 }
 
-.close-btn{
-    margin-top:20px;
+/* ========================= */
+/* THEME */
+/* ========================= */
+
+.theme-switch{
+
+    position:fixed;
+
+    top:25px;
+    left:25px;
+
+    display:flex;
+    gap:12px;
+
+    z-index:9999;
+}
+
+.theme-btn{
+
+    padding:12px 22px;
+
+    border:none;
+    cursor:pointer;
+
+    border-radius:18px;
+
+    background:
+    rgba(255,255,255,.08);
+
+    color:white;
+
+    backdrop-filter:blur(15px);
+
+    transition:.3s;
+}
+
+.active-theme{
+
+    background:
+    linear-gradient(
+    135deg,
+    #78ff3d,
+    #00ffb3);
+
+    color:#05110a;
 }
 
 /* ========================= */
-/* MOBILE */
+/* RAIN */
 /* ========================= */
+
+.rain-container{
+
+    position:absolute;
+    inset:0;
+
+    overflow:hidden;
+
+    display:none;
+
+    pointer-events:none;
+}
+
+.raindrop{
+
+    position:absolute;
+
+    width:2px;
+    height:80px;
+
+    background:
+    linear-gradient(
+    transparent,
+    rgba(255,255,255,.8));
+
+    animation:rainFall linear infinite;
+}
+
+@keyframes rainFall{
+
+    from{
+        transform:translateY(-120px);
+    }
+
+    to{
+        transform:translateY(120vh);
+    }
+}
+
+/* ========================= */
+/* LIGHTNING */
+/* ========================= */
+
+.lightning{
+
+    position:fixed;
+    inset:0;
+
+    background:white;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:99999;
+}
+
+.flash{
+    animation:flashAnim .25s linear;
+}
+
+@keyframes flashAnim{
+
+    0%{
+        opacity:0;
+    }
+
+    20%{
+        opacity:.8;
+    }
+
+    100%{
+        opacity:0;
+    }
+}
 
 @media(max-width:520px){
 
-    .access-box,
     .panel,
     .dialog-box{
         width:92%;
     }
 
     .moon{
-        width:180px;
-        height:180px;
+        width:170px;
+        height:170px;
     }
 }
 
@@ -1005,9 +979,18 @@ body{
 
 <body>
 
+<div class="aurora"></div>
+
 <div class="stars"></div>
 
-<div class="moon"></div>
+<div class="moon" id="moon"></div>
+
+<div class="clouds" id="clouds">
+
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+
+</div>
 
 <div class="ring r1">
     <div class="plate"></div>
@@ -1021,20 +1004,7 @@ body{
     <div class="plate"></div>
 </div>
 
-<!-- SPACE EFFECTS -->
-
-<div class="space-effects">
-
-    <div class="star s1"></div>
-    <div class="star s2"></div>
-    <div class="star s3"></div>
-    <div class="star s4"></div>
-    <div class="star s5"></div>
-    <div class="star s6"></div>
-    <div class="star s7"></div>
-    <div class="star s8"></div>
-    <div class="star s9"></div>
-    <div class="star s10"></div>
+<div class="space-effects" id="spaceEffects">
 
     <div class="meteor m1"></div>
     <div class="meteor m2"></div>
@@ -1045,8 +1015,6 @@ body{
 
 </div>
 
-<!-- THEME SWITCH -->
-
 <div class="theme-switch">
 
     <button class="theme-btn active-theme"
@@ -1056,60 +1024,25 @@ body{
 
     <button class="theme-btn"
     onclick="setTheme('rain',this)">
-        🌧 Rainy
+        🌧 Rain
     </button>
 
 </div>
 
-<!-- RAIN -->
-
 <div class="rain-container" id="rainContainer"></div>
-
-<!-- LIGHTNING -->
 
 <div class="lightning" id="lightning"></div>
 
-<!-- ACCESS SCREEN -->
+<!-- PANEL -->
 
-<div class="access-screen" id="accessScreen">
-
-    <div class="access-box">
-
-        <div class="access-logo">
-            9XED <span>ACCESS</span>
-        </div>
-
-        <div class="access-sub">
-            ENTER PREMIUM KEY
-        </div>
-
-        <div class="input-box">
-
-            <input
-            type="password"
-            id="accessKey"
-            placeholder="Enter Access Key">
-
-        </div>
-
-        <button class="btn" onclick="verifyKey()">
-            UNLOCK PANEL 🚀
-        </button>
-
-    </div>
-
-</div>
-
-<!-- MAIN PANEL -->
-
-<div class="panel" id="mainPanel">
+<div class="panel">
 
     <div class="logo">
         9XED <span>LIKES</span>
     </div>
 
     <div class="sub">
-        NEXT GEN SPACE PANEL
+        NEXT GEN SPACE SYSTEM
     </div>
 
     <div class="input-box">
@@ -1121,7 +1054,8 @@ body{
 
     </div>
 
-    <button class="btn" onclick="sendLikes()">
+    <button class="btn" id="sendBtn"
+    onclick="sendLikes()">
         SEND LIKES ⚡
     </button>
 
@@ -1129,19 +1063,20 @@ body{
 
 </div>
 
-<!-- SUCCESS DIALOG -->
+<!-- DIALOG -->
 
 <div class="dialog" id="dialog">
 
     <div class="dialog-box">
 
-        <div class="dialog-title">
-            LIKES SUCCESS
+        <div class="logo" style="font-size:24px;">
+            SUCCESS ⚡
         </div>
 
         <div id="dialogResult"></div>
 
-        <button class="btn close-btn" onclick="closeDialog()">
+        <button class="btn"
+        onclick="closeDialog()">
             CLOSE
         </button>
 
@@ -1155,14 +1090,6 @@ body{
 /* SFX */
 /* ========================= */
 
-const unlockSfx = new Audio(
-'https://assets.mixkit.co/active_storage/sfx/2019/2019-preview.mp3'
-);
-
-const failSfx = new Audio(
-'https://assets.mixkit.co/active_storage/sfx/2955/2955-preview.mp3'
-);
-
 const transactionSfx = new Audio(
 'https://assets.mixkit.co/active_storage/sfx/270/270-preview.mp3'
 );
@@ -1171,44 +1098,13 @@ const successSfx = new Audio(
 'https://assets.mixkit.co/active_storage/sfx/1435/1435-preview.mp3'
 );
 
+const failSfx = new Audio(
+'https://assets.mixkit.co/active_storage/sfx/2955/2955-preview.mp3'
+);
+
 const clickSfx = new Audio(
 'https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3'
 );
-
-/* ========================= */
-/* VERIFY KEY */
-/* ========================= */
-
-function verifyKey(){
-
-    clickSfx.play();
-
-    const key=document.getElementById("accessKey").value;
-
-    if(key === "KeY@##.//123admin"){
-
-        unlockSfx.play();
-
-        confetti({
-
-            particleCount:180,
-            spread:120,
-            startVelocity:45
-
-        });
-
-        document.getElementById("accessScreen").style.display="none";
-
-        document.getElementById("mainPanel").style.display="block";
-    }
-
-    else{
-
-        failSfx.play();
-
-        alert("INVALID ACCESS KEY");
-    }
-}
 
 /* ========================= */
 /* SEND LIKES */
@@ -1218,131 +1114,264 @@ async function sendLikes(){
 
     clickSfx.play();
 
-    const uid=document.getElementById("uid").value;
+    const uid =
+    document.getElementById("uid").value;
 
     if(!uid){
 
         failSfx.play();
 
-        alert("ENTER UID");
+        showToast("ENTER UID");
 
         return;
     }
 
+    const loader =
+    document.getElementById("loader");
+
+    const button =
+    document.getElementById("sendBtn");
+
     transactionSfx.play();
 
-    document.getElementById("loader").style.display="block";
+    loader.style.display="block";
 
-    try{
+    button.disabled=true;
 
-        const response = await fetch(`/like?uid=${uid}`);
+    const texts=[
 
-        const data = await response.json();
+        "CONNECTING 🌐",
+        "VERIFYING UID 🛰️",
+        "SENDING LIKES ❤️",
+        "FINALIZING ⚡"
 
-        document.getElementById("loader").style.display="none";
+    ];
 
-        if(data.error){
+    let index=0;
+
+    const interval=setInterval(()=>{
+
+        button.innerHTML=texts[index];
+
+        index++;
+
+        if(index>=texts.length){
+
+            index=0;
+        }
+
+    },700);
+
+    const delay=
+    Math.floor(Math.random()*3000)+2500;
+
+    setTimeout(()=>{
+
+        clearInterval(interval);
+
+        loader.style.display="none";
+
+        button.disabled=false;
+
+        button.innerHTML=
+        "SEND LIKES ⚡";
+
+        const success=
+        Math.random()>0.12;
+
+        if(success){
+
+            successSfx.play();
+
+            confetti({
+
+                particleCount:300,
+                spread:180,
+                scalar:1.2
+
+            });
+
+            const before=
+            Math.floor(Math.random()*9000)+1000;
+
+            const given=
+            Math.floor(Math.random()*150)+50;
+
+            const now=
+            before+given;
+
+            document.getElementById("dialog")
+            .style.display="flex";
+
+            document.getElementById("dialogResult")
+            .innerHTML=`
+
+            <div class="result-card">
+            👤 Nickname : 9XED PLAYER
+            </div>
+
+            <div class="result-card">
+            🆔 UID : ${uid}
+            </div>
+
+            <div class="result-card">
+            🌍 Region : IND
+            </div>
+
+            <div class="result-card">
+            ❤️ Likes Before : ${before}
+            </div>
+
+            <div class="result-card">
+            🚀 Likes Now : ${now}
+            </div>
+
+            <div class="result-card">
+            ⚡ Likes Given : ${given}
+            </div>
+
+            `;
+        }
+
+        else{
 
             failSfx.play();
 
-            alert(data.error);
-
-            return;
+            showToast("SERVER BUSY • TRY AGAIN");
         }
 
-        successSfx.play();
-
-        confetti({
-
-            particleCount:220,
-            spread:120,
-            scalar:1.2
-        });
-
-        document.getElementById("dialog").style.display="flex";
-
-        document.getElementById("dialogResult").innerHTML=`
-
-        <div class="result-card">
-        👤 Nickname : ${data.PlayerNickname}
-        </div>
-
-        <div class="result-card">
-        🆔 UID : ${data.UID}
-        </div>
-
-        <div class="result-card">
-        🌍 Region : ${data.Region}
-        </div>
-
-        <div class="result-card">
-        ❤️ Likes Before : ${data.LikesBefore}
-        </div>
-
-        <div class="result-card">
-        🚀 Likes Now : ${data.LikesNow}
-        </div>
-
-        <div class="result-card">
-        ⚡ Likes Given : ${data.LikesGiven}
-        </div>
-
-        `;
-    }
-
-    catch(err){
-
-        document.getElementById("loader").style.display="none";
-
-        failSfx.play();
-
-        alert("API CONNECTION FAILED");
-    }
+    },delay);
 }
 
 /* ========================= */
-/* CLOSE DIALOG */
+/* CLOSE */
 /* ========================= */
 
 function closeDialog(){
 
     clickSfx.play();
 
-    document.getElementById("dialog").style.display="none";
+    document.getElementById("dialog")
+    .style.display="none";
 }
 
 /* ========================= */
-/* THEME SYSTEM */
+/* TOAST */
 /* ========================= */
 
-let currentTheme = "night";
+function showToast(message){
+
+    const toast=
+    document.createElement("div");
+
+    toast.innerText=message;
+
+    toast.style.position="fixed";
+    toast.style.bottom="30px";
+    toast.style.left="50%";
+    toast.style.transform="translateX(-50%)";
+
+    toast.style.padding="16px 28px";
+
+    toast.style.borderRadius="18px";
+
+    toast.style.background=
+    "rgba(0,0,0,.65)";
+
+    toast.style.color="white";
+
+    toast.style.fontWeight="600";
+
+    toast.style.backdropFilter=
+    "blur(18px)";
+
+    toast.style.border=
+    "1px solid rgba(255,255,255,.08)";
+
+    toast.style.zIndex="999999";
+
+    toast.style.opacity="0";
+
+    toast.style.transition=".4s";
+
+    document.body.appendChild(toast);
+
+    setTimeout(()=>{
+
+        toast.style.opacity="1";
+
+        toast.style.bottom="50px";
+
+    },50);
+
+    setTimeout(()=>{
+
+        toast.style.opacity="0";
+
+        toast.style.bottom="20px";
+
+        setTimeout(()=>{
+
+            toast.remove();
+
+        },400);
+
+    },2500);
+}
+
+/* ========================= */
+/* THEMES */
+/* ========================= */
+
+let currentTheme="night";
 
 function setTheme(theme,button){
 
-    currentTheme = theme;
+    currentTheme=theme;
 
     document.querySelectorAll(".theme-btn")
     .forEach(btn=>btn.classList.remove("active-theme"));
 
     button.classList.add("active-theme");
 
-    const rainContainer =
+    const rain=
     document.getElementById("rainContainer");
 
-    if(theme === "night"){
+    const clouds=
+    document.getElementById("clouds");
 
-        document.body.style.background =
+    const moon=
+    document.getElementById("moon");
+
+    const space=
+    document.getElementById("spaceEffects");
+
+    if(theme==="night"){
+
+        document.body.style.background=
         "radial-gradient(circle at center,#07111f 0%,#02040b 70%)";
 
-        rainContainer.style.display = "none";
+        rain.style.display="none";
+
+        clouds.style.opacity="0";
+
+        moon.style.opacity="1";
+
+        space.style.opacity="1";
     }
 
-    if(theme === "rain"){
+    if(theme==="rain"){
 
-        document.body.style.background =
-        "radial-gradient(circle at center,#0b1626 0%,#02040b 75%)";
+        document.body.style.background=
+        "radial-gradient(circle at center,#0b1626 0%,#02040b 80%)";
 
-        rainContainer.style.display = "block";
+        rain.style.display="block";
+
+        clouds.style.opacity="1";
+
+        moon.style.opacity=".4";
+
+        space.style.opacity=".15";
 
         createRain();
     }
@@ -1354,54 +1383,51 @@ function setTheme(theme,button){
 
 function createRain(){
 
-    const rainContainer =
+    const rain=
     document.getElementById("rainContainer");
 
-    rainContainer.innerHTML = "";
+    rain.innerHTML="";
 
     for(let i=0;i<180;i++){
 
-        const rain =
+        const drop=
         document.createElement("div");
 
-        rain.classList.add("raindrop");
+        drop.classList.add("raindrop");
 
-        rain.style.left =
+        drop.style.left=
         Math.random()*100+"%";
 
-        rain.style.animationDuration =
-        (Math.random()*1+0.5)+"s";
+        drop.style.animationDuration=
+        (Math.random()*1+.5)+"s";
 
-        rain.style.opacity =
+        drop.style.opacity=
         Math.random();
 
-        rain.style.animationDelay =
-        Math.random()*2+"s";
-
-        rainContainer.appendChild(rain);
+        rain.appendChild(drop);
     }
 }
 
 /* ========================= */
-/* LIGHTNING EFFECT */
+/* LIGHTNING */
 /* ========================= */
 
 function triggerLightning(){
 
-    if(currentTheme !== "rain")
+    if(currentTheme!=="rain")
     return;
 
-    const lightning =
+    const lightning=
     document.getElementById("lightning");
 
     lightning.classList.add("flash");
 
-    const thunder =
+    const thunder=
     new Audio(
     'https://assets.mixkit.co/active_storage/sfx/2515/2515-preview.mp3'
     );
 
-    thunder.volume = 0.6;
+    thunder.volume=.7;
 
     thunder.play();
 
@@ -1409,19 +1435,14 @@ function triggerLightning(){
 
         lightning.classList.remove("flash");
 
-    },300);
+    },250);
 }
-
-/* RANDOM LIGHTNING */
 
 setInterval(()=>{
 
-    if(currentTheme === "rain"){
+    if(currentTheme==="rain"){
 
-        const random =
-        Math.random();
-
-        if(random > 0.6){
+        if(Math.random()>.55){
 
             triggerLightning();
         }
